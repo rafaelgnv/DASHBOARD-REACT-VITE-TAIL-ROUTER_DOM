@@ -1,0 +1,45 @@
+# =========================================
+# DEPENDÊNCIAS E BUILD
+# =========================================
+# Ignora a pasta de dependências pesadas
+node_modules/
+
+# Ignora as pastas de build final de produção geradas pelo Vite
+dist/
+dist-ssr/
+
+# =========================================
+# VARIÁVEIS DE AMBIENTE (Segurança)
+# =========================================
+# Ignora arquivos onde ficam senhas, tokens e chaves de API
+.env
+.env.local
+.env.*.local
+*.local
+
+# =========================================
+# LOGS E CACHES (Arquivos temporários)
+# =========================================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.eslintcache
+.vite/
+coverage/
+
+# =========================================
+# CONFIGURAÇÕES DE SISTEMA OPERACIONAL E EDITORES
+# =========================================
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
