@@ -7,7 +7,7 @@ export function CadastrarLivro() {
     const { id } = useParams();
 
     const [livro, setLivro] = useState({
-        isbn: '', titulo: '', autor: '', editora: '', ano: '', assunto: '', 
+        isbn: '', titulo: '', autor: '', editora: '', ano: '', assunto: '',
         quantidade: '', servePara: '', origem: '', precoVenda: '', precoAluguel: '', taxaRenovacao: ''
     });
 
@@ -17,7 +17,7 @@ export function CadastrarLivro() {
             const acervo = JSON.parse(localStorage.getItem('acervoLivros')) || [];
             // O mesmo Number() que usamos antes para evitar bugs de tipo!
             const livroEncontrado = acervo.find(l => Number(l.id) === Number(id));
-            
+
             if (livroEncontrado) {
                 setLivro(livroEncontrado);
             }
@@ -35,7 +35,7 @@ export function CadastrarLivro() {
 
         if (id) {
             // MODO EDIÇÃO: Atualiza o livro existente
-            const acervoAtualizado = acervoAntigo.map(l => 
+            const acervoAtualizado = acervoAntigo.map(l =>
                 Number(l.id) === Number(id) ? livro : l
             );
             localStorage.setItem('acervoLivros', JSON.stringify(acervoAtualizado));
@@ -46,7 +46,7 @@ export function CadastrarLivro() {
             localStorage.setItem('acervoLivros', JSON.stringify([...acervoAntigo, novoLivro]));
             alert('Novo livro gravado com sucesso!');
         }
-        
+
         navigate('/livros');
     };
 
@@ -65,42 +65,42 @@ export function CadastrarLivro() {
 
             <div className="bg-white p-8 rounded shadow">
                 <form onSubmit={handleSubmit}>
-                    
+
                     <h3 className="text-azul-booknet text-lg font-semibold border-b border-gray-200 pb-2 mb-6">Informações Básicas</h3>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div className="flex flex-col">
                             <label className="text-sm font-semibold text-gray-600 mb-2">ISBN <span className="text-red-500">*</span></label>
-                            <input type="text" name="isbn" value={livro.isbn} onChange={handleInputChange} placeholder="Ex: 978-85-..." required 
-                                   className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
+                            <input type="text" name="isbn" value={livro.isbn} onChange={handleInputChange} placeholder="Ex: 978-85-..." required
+                                className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
                         </div>
                         <div className="flex flex-col">
                             <label className="text-sm font-semibold text-gray-600 mb-2">Nome do Livro <span className="text-red-500">*</span></label>
-                            <input type="text" name="titulo" value={livro.titulo} onChange={handleInputChange} required 
-                                   className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
+                            <input type="text" name="titulo" value={livro.titulo} onChange={handleInputChange} required
+                                className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
                         </div>
                         <div className="flex flex-col">
                             <label className="text-sm font-semibold text-gray-600 mb-2">Autor(es) <span className="text-red-500">*</span></label>
-                            <input type="text" name="autor" value={livro.autor} onChange={handleInputChange} required 
-                                   className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
+                            <input type="text" name="autor" value={livro.autor} onChange={handleInputChange} required
+                                className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
                         </div>
                         <div className="flex flex-col">
                             <label className="text-sm font-semibold text-gray-600 mb-2">Editora <span className="text-red-500">*</span></label>
-                            <input type="text" name="editora" value={livro.editora} onChange={handleInputChange} placeholder="Ex: Editora IFMA" required 
-                                   className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
+                            <input type="text" name="editora" value={livro.editora} onChange={handleInputChange} placeholder="Ex: Editora IFMA" required
+                                className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                         <div className="flex flex-col">
                             <label className="text-sm font-semibold text-gray-600 mb-2">Ano de Publicação <span className="text-red-500">*</span></label>
-                            <input type="number" name="ano" value={livro.ano} onChange={handleInputChange} required 
-                                   className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
+                            <input type="number" name="ano" value={livro.ano} onChange={handleInputChange} required
+                                className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
                         </div>
                         <div className="flex flex-col">
                             <label className="text-sm font-semibold text-gray-600 mb-2">Assunto <span className="text-red-500">*</span></label>
-                            <select name="assunto" value={livro.assunto} onChange={handleInputChange} required 
-                                    className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all bg-white">
+                            <select name="assunto" value={livro.assunto} onChange={handleInputChange} required
+                                className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all bg-white">
                                 <option value="" disabled>Selecione...</option>
                                 <option value="Desenvolvimento">Desenvolvimento</option>
                                 <option value="Redes">Redes</option>
@@ -109,13 +109,13 @@ export function CadastrarLivro() {
                         </div>
                         <div className="flex flex-col">
                             <label className="text-sm font-semibold text-gray-600 mb-2">Quantidade <span className="text-red-500">*</span></label>
-                            <input type="number" name="quantidade" value={livro.quantidade} onChange={handleInputChange} required 
-                                   className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
+                            <input type="number" name="quantidade" value={livro.quantidade} onChange={handleInputChange} required
+                                className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
                         </div>
                     </div>
 
                     <h3 className="text-azul-booknet text-lg font-semibold border-b border-gray-200 pb-2 mb-6">Classificação e Preços</h3>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div className="flex flex-col">
                             <label className="text-sm font-semibold text-gray-600 mb-2">Para que serve? <span className="text-red-500">*</span></label>
@@ -140,6 +140,26 @@ export function CadastrarLivro() {
                             </div>
                         </div>
                     </div>
+
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        {livro.servePara === 'venda' && (
+                            <div className="flex flex-col animate-fade-in">
+                                <label className="text-sm font-semibold text-gray-600 mb-2">Preço de Venda (R$) <span className="text-red-500">*</span></label>
+                                <input type="number" step="0.01" name="precoVenda" value={livro.precoVenda} onChange={handleInputChange} placeholder="Ex: 45.90" required
+                                    className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
+                            </div>
+                        )}
+
+                        {livro.servePara === 'aluguel' && (
+                            <div className="flex flex-col animate-fade-in">
+                                <label className="text-sm font-semibold text-gray-600 mb-2">Preço de Aluguel (R$) <span className="text-red-500">*</span></label>
+                                <input type="number" step="0.01" name="precoAluguel" value={livro.precoAluguel} onChange={handleInputChange} placeholder="Ex: 15.00" required
+                                    className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-azul-booknet focus:ring-4 focus:ring-azul-booknet/20 transition-all" />
+                            </div>
+                        )}
+                    </div>
+                    
 
                     <div className="flex justify-end gap-4 mt-8 pt-4 border-t border-gray-100">
                         <button type="button" onClick={() => navigate('/livros')} className="px-6 py-2 bg-gray-100 text-gray-700 font-semibold rounded border hover:bg-gray-200 transition-colors">
